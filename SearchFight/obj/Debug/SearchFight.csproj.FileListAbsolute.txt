@@ -1,0 +1,7 @@
+C:\Users\Sergio\source\repos\SearchFight\SearchFight\bin\Debug\SearchFight.exe.config
+C:\Users\Sergio\source\repos\SearchFight\SearchFight\bin\Debug\SearchFight.exe
+C:\Users\Sergio\source\repos\SearchFight\SearchFight\bin\Debug\SearchFight.pdb
+C:\Users\Sergio\source\repos\SearchFight\SearchFight\obj\Debug\SearchFight.csprojAssemblyReference.cache
+C:\Users\Sergio\source\repos\SearchFight\SearchFight\obj\Debug\SearchFight.csproj.CoreCompileInputs.cache
+C:\Users\Sergio\source\repos\SearchFight\SearchFight\obj\Debug\SearchFight.exe
+C:\Users\Sergio\source\repos\SearchFight\SearchFight\obj\Debug\SearchFight.pdb
