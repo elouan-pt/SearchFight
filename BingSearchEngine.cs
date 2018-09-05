@@ -14,7 +14,7 @@ namespace SearchFight
         public Response Send(string query)
         {
             System.Net.WebClient client = new System.Net.WebClient();
-            client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
+            client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
 
             string url = "https://www.bing.com/search";
             string webData = client.DownloadString($"{url}?q={query}");
@@ -24,7 +24,7 @@ namespace SearchFight
             long count = 0;
             if (match.Success)
             {
-                count = long.Parse(match.Groups[1].Value.Replace(",", ""));
+                count = long.Parse(match.Groups[1].Value.Replace(",", "").Replace(".", ""));
             }
             return new Response(count, query, Name);
         }
