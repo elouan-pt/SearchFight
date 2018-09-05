@@ -42,15 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BingSearchEngine.cs" />
-    <Compile Include="GoogleSearchEngine.cs" />
-    <Compile Include="ISearchEngine.cs" />
-    <Compile Include="ISearchEngineFactory.cs" />
+    <Compile Include="Service\BingSearchEngine.cs" />
+    <Compile Include="Common\WebScrapperUtil.cs" />
+    <Compile Include="Service\GoogleSearchEngine.cs" />
+    <Compile Include="Service\ISearchEngine.cs" />
+    <Compile Include="Service\ISearchEngineFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Response.cs" />
-    <Compile Include="Result.cs" />
-    <Compile Include="WebScraperFactory.cs" />
+    <Compile Include="Service\Response.cs" />
+    <Compile Include="Service\Result.cs" />
+    <Compile Include="Service\WebScraperFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

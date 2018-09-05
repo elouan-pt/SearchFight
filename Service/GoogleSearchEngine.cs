@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
+using SearchFight.Common;
 
-namespace SearchFight
+namespace SearchFight.Service
 {
     class GoogleSearchEngine : ISearchEngine
     {
@@ -19,13 +19,7 @@ namespace SearchFight
             string url = "https://www.google.com/search";
             string webData = client.DownloadString($"{url}?q={query}&hl=en");
             string pattern = @"\<div[^\>]+id=""resultStats""[^\>]*\>About ([\d\,\.]+) results";
-            Regex regex = new Regex(pattern);
-            Match match = regex.Match(webData);
-            long count = 0;
-            if (match.Success)
-            {
-                count = long.Parse(match.Groups[1].Value.Replace(",", "").Replace(".", ""));
-            }
+            long count = WebScrapperUtil.GetResultCount(pattern, webData);
             return new Response(count, query, Name);
         }
     }

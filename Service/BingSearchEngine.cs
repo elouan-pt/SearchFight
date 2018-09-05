@@ -1,11 +1,11 @@
-﻿using System;
+﻿using SearchFight.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
-namespace SearchFight
+namespace SearchFight.Service
 {
     class BingSearchEngine : ISearchEngine
     {
@@ -19,13 +19,7 @@ namespace SearchFight
             string url = "https://www.bing.com/search";
             string webData = client.DownloadString($"{url}?q={query}");
             string pattern = @"\<span[^\>]+class=""sb_count""[^\>]*\>([\d\.\,]+)";
-            Regex regex = new Regex(pattern);
-            Match match = regex.Match(webData);
-            long count = 0;
-            if (match.Success)
-            {
-                count = long.Parse(match.Groups[1].Value.Replace(",", "").Replace(".", ""));
-            }
+            long count = WebScrapperUtil.GetResultCount(pattern, webData);
             return new Response(count, query, Name);
         }
     }
