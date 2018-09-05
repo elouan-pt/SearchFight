@@ -9,7 +9,7 @@ namespace SearchFight
 {
     class BingSearchEngine : ISearchEngine
     {
-        public string Name => "Bing";
+        public string Name => "MSN Search";
 
         public Response Send(string query)
         {
@@ -18,13 +18,13 @@ namespace SearchFight
 
             string url = "https://www.bing.com/search";
             string webData = client.DownloadString($"{url}?q={query}");
-
-            Regex regex = new Regex(@"<span[^\>]+class=""sb_count""[^\>]*>;([\d\.\,]+)");
+            string pattern = @"\<span[^\>]+class=""sb_count""[^\>]*\>([\d\.\,]+)";
+            Regex regex = new Regex(pattern);
             Match match = regex.Match(webData);
             long count = 0;
             if (match.Success)
             {
-                count = long.Parse(match.Groups[1].Value);
+                count = long.Parse(match.Groups[1].Value.Replace(",", ""));
             }
             return new Response(count, query, Name);
         }
