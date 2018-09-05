@@ -55,10 +55,16 @@ namespace SearchFight.Service
                 Console.WriteLine(sb);
             }
 
-            var totalWinner = (from r in dictionary
-                              orderby r.Value
-                              select r.Key).Last();
-            
+            var totalWinner = String.Empty;
+            long winnerValue = 0;
+            foreach (var result in dictionary)
+            {
+                if (result.Value > winnerValue)
+                {
+                    winnerValue = result.Value;
+                    totalWinner = result.Key;
+                }
+            }
             Console.WriteLine($"Total winner: {totalWinner}");
         }
 
