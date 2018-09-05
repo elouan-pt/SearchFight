@@ -11,17 +11,25 @@ namespace SearchFight
     {
         static void Main(string[] args)
         {
+            int begin = Environment.TickCount;
+            AsyncRunner(args);
+            Console.WriteLine($"Time: {(Environment.TickCount - begin)}");
+        }
+
+        private static async void AsyncRunner(string[] args)
+        {
             ISearchEngineFactory factory = new WebScraperFactory();
             var engines = factory.CreateEngines();
             var result = new Result();
+            List<Task> taskList = new List<Task>();
             foreach (var engine in engines)
             {
                 foreach (var query in args)
                 {
-                    var response = engine.Send(query);
-                    result.Aggregate(response);
+                    taskList.Add(engine.Send(query, result));
                 }
             }
+            await Task.WhenAll(taskList.ToArray());
             result.PrintResult();
         }
     }

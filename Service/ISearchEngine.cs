@@ -9,6 +9,6 @@ namespace SearchFight.Service
     interface ISearchEngine
     {
         string Name { get; }
-        Response Send(string query);
+        Task Send(string query, Result result);
     }
 }
