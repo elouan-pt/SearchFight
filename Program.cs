@@ -11,9 +11,7 @@ namespace SearchFight
     {
         static void Main(string[] args)
         {
-            int begin = Environment.TickCount;
             AsyncRunner(args);
-            Console.WriteLine($"Time: {(Environment.TickCount - begin)}");
         }
 
         private static async void AsyncRunner(string[] args)
